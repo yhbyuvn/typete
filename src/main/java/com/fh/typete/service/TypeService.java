@@ -3,6 +3,7 @@ package com.fh.typete.service;
 import com.fh.typete.model.Brand;
 import com.fh.typete.model.Types;
 import com.fh.typete.vo.BrandVo;
+import com.fh.typete.vo.ProVo;
 
 import java.util.List;
 import java.util.Map;
@@ -21,4 +22,6 @@ public interface TypeService {
     void addBrand(Brand br);
 
     void upBrand(Brand br);
+
+    Map chaPro(ProVo pv);
 }

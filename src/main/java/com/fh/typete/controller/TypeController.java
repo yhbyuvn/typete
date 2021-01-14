@@ -5,6 +5,7 @@ import com.fh.typete.model.Types;
 import com.fh.typete.service.TypeService;
 import com.fh.typete.utils.Ud;
 import com.fh.typete.vo.BrandVo;
+import com.fh.typete.vo.ProVo;
 import com.fh.typete.vo.RespData;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -80,5 +81,16 @@ public class TypeController {
     public RespData upload(MultipartFile imgpath, HttpServletRequest request){
         Map<String, String> images = Ud.ul(imgpath, request, "images");
         return RespData.success(images);
+    }
+    @PostMapping("chaPro")
+    public RespData chaPro(ProVo pv){
+        if (pv.getPage()==null){
+            return RespData.error(400,"关键数据缺失");
+        }
+        if (pv.getLimit()==null){
+            return RespData.error(400,"关键数据缺失");
+        }
+        Map map=ts.chaPro(pv);
+        return RespData.success(map);
     }
 }

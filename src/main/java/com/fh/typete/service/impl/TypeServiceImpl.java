@@ -1,11 +1,13 @@
 package com.fh.typete.service.impl;
 
 import com.fh.typete.dao.BrandDao;
+import com.fh.typete.dao.ProDao;
 import com.fh.typete.dao.TypeDao;
 import com.fh.typete.model.Brand;
 import com.fh.typete.model.Types;
 import com.fh.typete.service.TypeService;
 import com.fh.typete.vo.BrandVo;
+import com.fh.typete.vo.ProVo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,6 +21,8 @@ public class TypeServiceImpl implements TypeService {
     private TypeDao td;
     @Resource
     private BrandDao bd;
+    @Resource
+    private ProDao pd;
 
     @Override
     public List<Types> cha() {
@@ -60,5 +64,14 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public void upBrand(Brand br) {
         bd.upBrand(br);
+    }
+
+    @Override
+    public Map chaPro(ProVo pv) {
+        pv.setStartIndex((pv.getPage()-1)*pv.getLimit());
+        Map map=new HashMap();
+        map.put("count",pd.chaCount(pv));
+        map.put("data",pd.chaPro(pv));
+        return map;
     }
 }
