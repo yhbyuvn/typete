@@ -27,4 +27,6 @@ public interface TypeService {
     Map chaPro(ProVo pv);
 
     void addPro(Propertys pro);
+
+    void upPro(Propertys pro);
 }

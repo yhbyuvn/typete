@@ -80,4 +80,9 @@ public class TypeServiceImpl implements TypeService {
     public void addPro(Propertys pro) {
         pd.addPro(pro);
     }
+
+    @Override
+    public void upPro(Propertys pro) {
+        pd.upPro(pro);
+    }
 }

@@ -105,4 +105,11 @@ public class TypeController {
         ts.addPro(pro);
         return RespData.success(null);
     }
+    @PostMapping("upPro")
+    public RespData upPro(Propertys pro){
+        pro.setAuthor("齐静春");
+        pro.setUpdatedate(new Date());
+        ts.upPro(pro);
+        return RespData.success(null);
+    }
 }
