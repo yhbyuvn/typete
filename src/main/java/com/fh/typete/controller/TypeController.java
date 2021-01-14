@@ -1,6 +1,7 @@
 package com.fh.typete.controller;
 
 import com.fh.typete.model.Brand;
+import com.fh.typete.model.Propertys;
 import com.fh.typete.model.Types;
 import com.fh.typete.service.TypeService;
 import com.fh.typete.utils.Ud;
@@ -92,5 +93,16 @@ public class TypeController {
         }
         Map map=ts.chaPro(pv);
         return RespData.success(map);
+    }
+    @PostMapping("addPro")
+    public RespData addPro(Propertys pro){
+        if (pro.getName()==null){
+            return RespData.error(400,"关键数据缺失");
+        }
+        pro.setAuthor("齐静春");
+        pro.setIsdel(0);
+        pro.setCreatedate(new Date());
+        ts.addPro(pro);
+        return RespData.success(null);
     }
 }

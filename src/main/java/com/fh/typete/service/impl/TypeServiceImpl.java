@@ -4,6 +4,7 @@ import com.fh.typete.dao.BrandDao;
 import com.fh.typete.dao.ProDao;
 import com.fh.typete.dao.TypeDao;
 import com.fh.typete.model.Brand;
+import com.fh.typete.model.Propertys;
 import com.fh.typete.model.Types;
 import com.fh.typete.service.TypeService;
 import com.fh.typete.vo.BrandVo;
@@ -73,5 +74,10 @@ public class TypeServiceImpl implements TypeService {
         map.put("count",pd.chaCount(pv));
         map.put("data",pd.chaPro(pv));
         return map;
+    }
+
+    @Override
+    public void addPro(Propertys pro) {
+        pd.addPro(pro);
     }
 }

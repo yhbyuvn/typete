@@ -1,6 +1,7 @@
 package com.fh.typete.service;
 
 import com.fh.typete.model.Brand;
+import com.fh.typete.model.Propertys;
 import com.fh.typete.model.Types;
 import com.fh.typete.vo.BrandVo;
 import com.fh.typete.vo.ProVo;
@@ -24,4 +25,6 @@ public interface TypeService {
     void upBrand(Brand br);
 
     Map chaPro(ProVo pv);
+
+    void addPro(Propertys pro);
 }
