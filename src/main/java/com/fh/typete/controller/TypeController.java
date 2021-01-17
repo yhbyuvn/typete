@@ -162,8 +162,8 @@ public class TypeController {
         return RespData.success(null);
     }
     @PostMapping("chaProValue")
-    public RespData chaProValue(Integer id){
-        List<ProValue> li=ts.chaProValue(id);
+    public RespData chaProValue(Integer proid){
+        List<ProValue> li=ts.chaProValue(proid);
         return RespData.success(li);
     }
     @PostMapping("addProValue")
