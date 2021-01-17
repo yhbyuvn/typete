@@ -11,10 +11,12 @@ import java.util.List;
 public interface ProDao {
     @Select("<script>" +
             "select count(*) from ts_pro where 1=1 and isdel=0" +
+            "<if test='name!=null and name!=&quot;&quot;'> and name like CONCAT('%',#{name},'%')</if>" +
             "</script>")
     Long chaCount(ProVo pv);
     @Select("<script>" +
             "select * from ts_pro where 1=1 and isdel=0" +
+            "<if test='name!=null and name!=&quot;&quot;'> and name like CONCAT('%',#{name},'%')</if>" +
             " limit #{startIndex},#{limit}" +
             "</script>")
     List<Propertys> chaPro(ProVo pv);
