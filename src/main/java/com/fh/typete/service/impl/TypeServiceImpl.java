@@ -99,4 +99,9 @@ public class TypeServiceImpl implements TypeService {
     public void addProValue(ProValue pv) {
         pvd.addProValue(pv);
     }
+
+    @Override
+    public void upProValue(ProValue pv) {
+        pvd.upProValue(pv);
+    }
 }

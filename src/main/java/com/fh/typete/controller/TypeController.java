@@ -171,4 +171,9 @@ public class TypeController {
         ts.addProValue(pv);
         return RespData.success(null);
     }
+    @PostMapping("upProValue")
+    public RespData upProValue(ProValue pv){
+        ts.upProValue(pv);
+        return RespData.success(null);
+    }
 }
