@@ -13,10 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.util.*;
 
 @RestController
 @CrossOrigin
@@ -106,9 +104,12 @@ public class TypeController {
            filePath: "images/b1d2de62-261c-4a7c-b264-090cafa15666.jpg"
          * */
     @PostMapping("upload")
-    public RespData upload(MultipartFile imgpath, HttpServletRequest request){
-        Map<String, String> images = Ud.ul(imgpath, request, "images");
-        return RespData.success(images);
+    public RespData upload(MultipartFile imgpath) throws IOException {
+        String ofname = imgpath.getOriginalFilename();
+        String newName= UUID.randomUUID().toString()+ofname.substring(ofname.lastIndexOf("."));
+        newName="image/"+newName;
+        String uplfile = Ud.uplfile(imgpath.getInputStream(), newName);
+        return RespData.success(uplfile);
     }
     /*
    * 接口文档

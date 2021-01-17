@@ -1,5 +1,8 @@
 package com.fh.typete.utils;
 
+import com.aliyun.oss.OSS;
+import com.aliyun.oss.OSSClientBuilder;
+import com.aliyun.oss.model.PutObjectResult;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,6 +19,13 @@ import java.util.UUID;
 
 
 public class Ud {
+
+	// Endpoint以杭州为例，其它Region请按实际情况填写。
+	private static String endpoint = "yhbyunv@1714710677738717.onaliyun.com";
+	// 阿里云主账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM账号进行API访问或日常运维，请登录 https://ram.console.aliyun.com 创建RAM账号。
+	private static String accessKeyId = "LTAI4FzY6oNmWkXY9eCuFCzG";
+	private static String accessKeySecret = "lzYk6o6zWSSHUBWgxFsdSeAqxJfTBm";
+	private static String bucket="thbyunv";
 
 	public static void ud(String filePath, String fileName, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		if(!StringUtils.isEmpty(filePath)){
@@ -77,7 +87,12 @@ public class Ud {
 		return map;
 		
 	}
-	
+	public static String uplfile(InputStream is,String fileName){
+		OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+		PutObjectResult por = ossClient.putObject(bucket, fileName, is);
+		ossClient.shutdown();
+		return "https://"+bucket+"."+endpoint+"/"+fileName;
+	}
 }
 
 
