@@ -1,6 +1,7 @@
 package com.fh.typete.controller;
 
 import com.fh.typete.model.Brand;
+import com.fh.typete.model.ProValue;
 import com.fh.typete.model.Propertys;
 import com.fh.typete.model.Types;
 import com.fh.typete.service.TypeService;
@@ -159,5 +160,10 @@ public class TypeController {
         pro.setUpdatedate(new Date());
         ts.upPro(pro);
         return RespData.success(null);
+    }
+    @PostMapping("chaProValue")
+    public RespData chaProValue(){
+        List<ProValue> li=ts.chaProValue();
+        return RespData.success(li);
     }
 }
