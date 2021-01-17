@@ -8,8 +8,8 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 public interface ProValueDao {
-    @Select("select * from ts_provalue where isdel=0")
-    List<ProValue> chaProValue();
+    @Select("select * from ts_provalue where isdel=0 and id=#{id}")
+    List<ProValue> chaProValue(Integer id);
     @Insert("insert into ts_provalue(value,valuech,proid,isdel) value(#{value},#{valuech},#{proid},#{isdel})")
     void addProValue(ProValue pv);
     @Update("update ts_provalue set value=#{value},valuech=#{valuech},proid=#{proid},isdel=#{isdel} where id=#{id}")

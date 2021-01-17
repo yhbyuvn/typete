@@ -31,7 +31,7 @@ public interface TypeService {
 
     void upPro(Propertys pro);
 
-    List<ProValue> chaProValue();
+    List<ProValue> chaProValue(Integer id);
 
     void addProValue(ProValue pv);
 

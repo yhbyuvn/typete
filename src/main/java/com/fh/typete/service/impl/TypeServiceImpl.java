@@ -90,8 +90,8 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
-    public List<ProValue> chaProValue() {
-        List<ProValue> li=pvd.chaProValue();
+    public List<ProValue> chaProValue(Integer id) {
+        List<ProValue> li=pvd.chaProValue(id);
         return li;
     }
 
