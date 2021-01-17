@@ -32,4 +32,6 @@ public interface TypeService {
     void upPro(Propertys pro);
 
     List<ProValue> chaProValue();
+
+    void addProValue(ProValue pv);
 }

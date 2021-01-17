@@ -166,4 +166,9 @@ public class TypeController {
         List<ProValue> li=ts.chaProValue();
         return RespData.success(li);
     }
+    @PostMapping("addProValue")
+    public RespData addProValue(ProValue pv){
+        ts.addProValue(pv);
+        return RespData.success(null);
+    }
 }

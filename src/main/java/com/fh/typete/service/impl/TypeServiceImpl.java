@@ -94,4 +94,9 @@ public class TypeServiceImpl implements TypeService {
         List<ProValue> li=pvd.chaProValue();
         return li;
     }
+
+    @Override
+    public void addProValue(ProValue pv) {
+        pvd.addProValue(pv);
+    }
 }
