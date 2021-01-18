@@ -86,6 +86,8 @@ public class TypeController {
      * 请求路径：http://localhost:8080/api/type/upBrand
      * 参数：无
      * 返回值 null
+     *      * 逻辑删除使用此接口
+     * 注意传值，全部都要传，isdel为0
      * */
     @PostMapping("upBrand")
     public RespData upBrand(Brand br){
@@ -150,6 +152,8 @@ public class TypeController {
      * 请求路径：http://localhost:8080/api/type/upPro
      * 参数：无
      * 返回值 null
+     *      * 逻辑删除使用此接口
+     * 注意传值，全部都要传，isdel为0
      * */
     @PostMapping("upPro")
     public RespData upPro(Propertys pro){
@@ -158,21 +162,48 @@ public class TypeController {
         ts.upPro(pro);
         return RespData.success(null);
     }
+    /*
+  * 接口文档
+  * 查属性值
+  *请求路径：http://localhost:8080/api/type/chaProValue
+  * 方式：post
+  * 参数：proid(数据类型：Integer  必填项)
+  *返回值：code 200 正常  info：提示信息
+  *data :数据
+      取全部数据：dd.data.data
+  * */
     @PostMapping("chaProValue")
     public RespData chaProValue(Integer proid){
         List<ProValue> li=ts.chaProValue(proid);
         return RespData.success(li);
     }
+    /*新增属性值
+     * 请求路径：http://localhost:8080/api/type/addProValue
+     * 参数：无
+     * 返回值 null
+     * */
     @PostMapping("addProValue")
     public RespData addProValue(ProValue pv){
         ts.addProValue(pv);
         return RespData.success(null);
     }
+    /*修改属性值
+     * 请求路径：http://localhost:8080/api/type/upProValue
+     * 参数：无
+     * 返回值 null
+     * 逻辑删除使用此接口
+     * 注意传值，全部都要传，isdel为0
+     * */
     @PostMapping("upProValue")
     public RespData upProValue(ProValue pv){
         ts.upProValue(pv);
         return RespData.success(null);
     }
+    /*新增商品
+     * 请求路径：http://localhost:8080/api/type/addGoods
+     * 参数：无
+     * 返回值 null
+     * */
     @PostMapping("addGoods")
     public RespData addGoods(Goods goods){
         goods.setAuthor("齐静春");
