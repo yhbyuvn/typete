@@ -1,9 +1,6 @@
 package com.fh.typete.controller;
 
-import com.fh.typete.model.Brand;
-import com.fh.typete.model.ProValue;
-import com.fh.typete.model.Propertys;
-import com.fh.typete.model.Types;
+import com.fh.typete.model.*;
 import com.fh.typete.service.TypeService;
 import com.fh.typete.utils.Ud;
 import com.fh.typete.vo.BrandVo;
@@ -174,6 +171,14 @@ public class TypeController {
     @PostMapping("upProValue")
     public RespData upProValue(ProValue pv){
         ts.upProValue(pv);
+        return RespData.success(null);
+    }
+    @PostMapping("addGoods")
+    public RespData addGoods(Goods goods){
+        goods.setAuthor("齐静春");
+        goods.setCreatedate(new Date());
+        goods.setIsdel(0);
+        ts.addGoods(goods);
         return RespData.success(null);
     }
 }

@@ -1,13 +1,7 @@
 package com.fh.typete.service.impl;
 
-import com.fh.typete.dao.BrandDao;
-import com.fh.typete.dao.ProDao;
-import com.fh.typete.dao.ProValueDao;
-import com.fh.typete.dao.TypeDao;
-import com.fh.typete.model.Brand;
-import com.fh.typete.model.ProValue;
-import com.fh.typete.model.Propertys;
-import com.fh.typete.model.Types;
+import com.fh.typete.dao.*;
+import com.fh.typete.model.*;
 import com.fh.typete.service.TypeService;
 import com.fh.typete.vo.BrandVo;
 import com.fh.typete.vo.ProVo;
@@ -28,6 +22,8 @@ public class TypeServiceImpl implements TypeService {
     private ProDao pd;
     @Resource
     private ProValueDao pvd;
+    @Resource
+    private GoodsDao gd;
     @Override
     public List<Types> cha() {
         List<Types> li=td.cha();
@@ -103,5 +99,10 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public void upProValue(ProValue pv) {
         pvd.upProValue(pv);
+    }
+
+    @Override
+    public void addGoods(Goods goods) {
+        gd.addGoods(goods);
     }
 }
