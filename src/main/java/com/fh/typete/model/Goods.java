@@ -14,6 +14,8 @@ public class Goods {
     private Double price;
     private Integer stocks;
     private Integer sortnum;
+    private String imgpath;
+    private Integer typeid;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date createdate;
@@ -117,5 +119,21 @@ public class Goods {
 
     public void setIsdel(Integer isdel) {
         this.isdel = isdel;
+    }
+
+    public String getImgpath() {
+        return imgpath;
+    }
+
+    public void setImgpath(String imgpath) {
+        this.imgpath = imgpath;
+    }
+
+    public Integer getTypeid() {
+        return typeid;
+    }
+
+    public void setTypeid(Integer typeid) {
+        this.typeid = typeid;
     }
 }
