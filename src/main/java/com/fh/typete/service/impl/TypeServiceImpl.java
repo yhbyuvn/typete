@@ -105,4 +105,10 @@ public class TypeServiceImpl implements TypeService {
     public void addGoods(Goods goods) {
         gd.addGoods(goods);
     }
+
+    @Override
+    public List<Propertys> chaProByTypeid(Integer typeid) {
+        List<Propertys> li=pd.chaProByTypeid(typeid);
+        return li;
+    }
 }

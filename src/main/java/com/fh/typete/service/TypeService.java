@@ -35,4 +35,6 @@ public interface TypeService {
     void upProValue(ProValue pv);
 
     void addGoods(Goods goods);
+
+    List<Propertys> chaProByTypeid(Integer typeid);
 }

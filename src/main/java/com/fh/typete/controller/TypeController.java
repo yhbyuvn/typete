@@ -132,6 +132,11 @@ public class TypeController {
         Map map=ts.chaPro(pv);
         return RespData.success(map);
     }
+    @PostMapping("chaProByTypeid")
+    public RespData chaProByTypeid(Integer typeid){
+        List<Propertys> li=ts.chaProByTypeid(typeid);
+        return RespData.success(li);
+    }
     /*
      * 请求路径：http://localhost:8080/api/type/addPro
      * 参数：name（数据类型：String 名称 必填）

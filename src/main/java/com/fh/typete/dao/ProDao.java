@@ -24,4 +24,6 @@ public interface ProDao {
     void addPro(Propertys pro);
     @Update("update ts_pro set name=#{name},namech=#{namech},typeid=#{typeid},type=#{type},issku=#{issku},isdel=#{isdel},updateDate=#{updatedate},author=#{author} where id=#{id}")
     void upPro(Propertys pro);
+    @Select("select * from ts_pro where typeid=#{typeid} and isdel=0")
+    List<Propertys> chaProByTypeid(Integer typeid);
 }
