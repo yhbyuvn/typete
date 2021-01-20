@@ -103,8 +103,10 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
-    public void addGoods(Goods goods) {
-        gd.addGoods(goods);
+    public Integer addGoods(Goods goods) {
+        Integer ida=gd.addGoods(goods);
+        Integer id=goods.getId();
+        return id;
     }
 
     @Override

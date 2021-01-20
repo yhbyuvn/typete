@@ -7,6 +7,7 @@ import com.fh.typete.vo.BrandVo;
 import com.fh.typete.vo.GoodsVo;
 import com.fh.typete.vo.ProVo;
 import com.fh.typete.vo.RespData;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -215,8 +216,8 @@ public class TypeController {
         goods.setAuthor("齐静春");
         goods.setCreatedate(new Date());
         goods.setIsdel(0);
-        ts.addGoods(goods);
-        return RespData.success(null);
+        Integer ida=ts.addGoods(goods);
+        return RespData.success(ida);
     }
     @PostMapping("chaGoods")
     public RespData chaGoods(GoodsVo gv){

@@ -2,15 +2,14 @@ package com.fh.typete.dao;
 
 import com.fh.typete.model.Goods;
 import com.fh.typete.vo.GoodsVo;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 public interface GoodsDao {
     @Insert("insert into ts_goods(name,title,brandid,productdecs,price,stocks,sortnum,isdel,createdate,updatedate,author,imgpath,typeid) value(#{name},#{title},#{brandid},#{productdecs},#{price},#{stocks},#{sortnum},#{isdel},#{createdate},#{updatedate},#{author},#{imgpath},#{typeid})")
-    void addGoods(Goods goods);
+    @Options(useGeneratedKeys = true,keyProperty = "id")
+    Integer addGoods(Goods goods);
     @Select("<script>" +
             "select count(*) from ts_goods where 1=1 and isdel=0" +
             "</script>")
