@@ -2,6 +2,7 @@ package com.fh.typete.service;
 
 import com.fh.typete.model.*;
 import com.fh.typete.vo.BrandVo;
+import com.fh.typete.vo.GoodsVo;
 import com.fh.typete.vo.ProVo;
 
 import java.util.List;
@@ -37,4 +38,10 @@ public interface TypeService {
     void addGoods(Goods goods);
 
     List<Propertys> chaProByTypeid(Integer typeid);
+
+    Map chaGoods(GoodsVo gv);
+
+    void upGoods(Goods goods);
+
+    void delGoods(Goods goods);
 }

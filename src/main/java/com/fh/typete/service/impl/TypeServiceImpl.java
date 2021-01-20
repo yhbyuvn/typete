@@ -4,6 +4,7 @@ import com.fh.typete.dao.*;
 import com.fh.typete.model.*;
 import com.fh.typete.service.TypeService;
 import com.fh.typete.vo.BrandVo;
+import com.fh.typete.vo.GoodsVo;
 import com.fh.typete.vo.ProVo;
 import org.springframework.stereotype.Service;
 
@@ -110,5 +111,24 @@ public class TypeServiceImpl implements TypeService {
     public List<Propertys> chaProByTypeid(Integer typeid) {
         List<Propertys> li=pd.chaProByTypeid(typeid);
         return li;
+    }
+
+    @Override
+    public Map chaGoods(GoodsVo gv) {
+        gv.setStartIndex((gv.getPage()-1)*gv.getLimit());
+        Map map = new HashMap();
+        map.put("count",gd.chaCount(gv));
+        map.put("data",gd.chaGoods(gv));
+        return map;
+    }
+
+    @Override
+    public void upGoods(Goods goods) {
+        gd.upGoods(goods);
+    }
+
+    @Override
+    public void delGoods(Goods goods) {
+        gd.delGoods(goods);
     }
 }

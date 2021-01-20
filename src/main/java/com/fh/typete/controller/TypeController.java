@@ -4,6 +4,7 @@ import com.fh.typete.model.*;
 import com.fh.typete.service.TypeService;
 import com.fh.typete.utils.Ud;
 import com.fh.typete.vo.BrandVo;
+import com.fh.typete.vo.GoodsVo;
 import com.fh.typete.vo.ProVo;
 import com.fh.typete.vo.RespData;
 import org.springframework.web.bind.annotation.*;
@@ -215,6 +216,33 @@ public class TypeController {
         goods.setCreatedate(new Date());
         goods.setIsdel(0);
         ts.addGoods(goods);
+        return RespData.success(null);
+    }
+    @PostMapping("chaGoods")
+    public RespData chaGoods(GoodsVo gv){
+        if (gv.getPage()==null){
+            return RespData.error(400,"关键数据异常");
+        }
+        if (gv.getLimit()==null){
+            return RespData.error(400,"关键数据异常");
+        }
+        Map map=ts.chaGoods(gv);
+        return  RespData.success(map);
+    }
+    @PostMapping("upGoods")
+    public RespData upGoods(Goods goods){
+        goods.setUpdatedate(new Date());
+        goods.setAuthor("齐静春");
+        goods.setIsdel(0);
+        ts.upGoods(goods);
+        return RespData.success(null);
+    }
+    @DeleteMapping("delGoods")
+    public RespData delGoods(Goods goods){
+        goods.setUpdatedate(new Date());
+        goods.setAuthor("齐静春");
+        goods.setIsdel(1);
+        ts.delGoods(goods);
         return RespData.success(null);
     }
 }
