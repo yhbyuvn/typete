@@ -212,12 +212,12 @@ public class TypeController {
      * 返回值 null
      * */
     @PostMapping("addGoods")
-    public RespData addGoods(Goods goods){
+    public RespData addGoods(Goods goods,String pros,String sku){
         goods.setAuthor("齐静春");
         goods.setCreatedate(new Date());
         goods.setIsdel(0);
-        Integer ida=ts.addGoods(goods);
-        return RespData.success(ida);
+        ts.addGoods(goods,pros,sku);
+        return RespData.success(null);
     }
     @PostMapping("chaGoods")
     public RespData chaGoods(GoodsVo gv){

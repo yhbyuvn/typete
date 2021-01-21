@@ -1,5 +1,7 @@
 package com.fh.typete.service.impl;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.fh.typete.dao.*;
 import com.fh.typete.model.*;
 import com.fh.typete.service.TypeService;
@@ -7,8 +9,10 @@ import com.fh.typete.vo.BrandVo;
 import com.fh.typete.vo.GoodsVo;
 import com.fh.typete.vo.ProVo;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +29,8 @@ public class TypeServiceImpl implements TypeService {
     private ProValueDao pvd;
     @Resource
     private GoodsDao gd;
+    @Resource
+    private GoodsValueDao gvd;
     @Override
     public List<Types> cha() {
         List<Types> li=td.cha();
@@ -103,10 +109,32 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
-    public Integer addGoods(Goods goods) {
-        Integer ida=gd.addGoods(goods);
+    @Transactional
+    public void addGoods(Goods goods,String pro,String sku) {
+        gd.addGoods(goods);
         Integer id=goods.getId();
-        return id;
+        List<GoodsValue> li=new ArrayList<>();
+        JSONArray objects = JSONObject.parseArray(pro);
+        for (int i = 0; i <objects.size() ; i++) {
+            GoodsValue gv=new GoodsValue();
+            gv.setGoodid(id);
+            gv.setGoodvalue(objects.get(i).toString());
+            li.add(gv);
+        }
+        JSONArray objects1 = JSONObject.parseArray(sku);
+        for (int i = 0; i <objects1.size() ; i++) {
+            JSONObject data = (JSONObject) objects1.get(i);
+            GoodsValue gv=new GoodsValue();
+            gv.setGoodid(id);
+            gv.setPrice(data.getDouble("price"));
+            gv.setStorcks(data.getInteger("storcks"));
+            data.remove("price");
+            data.remove("storcks");
+            gv.setGoodvalue(objects1.get(i).toString());
+            li.add(gv);
+
+        }
+        gvd.adds(li);
     }
 
     @Override

@@ -9,7 +9,7 @@ import java.util.List;
 public interface GoodsDao {
     @Insert("insert into ts_goods(name,title,brandid,productdecs,price,stocks,sortnum,isdel,createdate,updatedate,author,imgpath,typeid) value(#{name},#{title},#{brandid},#{productdecs},#{price},#{stocks},#{sortnum},#{isdel},#{createdate},#{updatedate},#{author},#{imgpath},#{typeid})")
     @Options(useGeneratedKeys = true,keyProperty = "id")
-    Integer addGoods(Goods goods);
+    void addGoods(Goods goods);
     @Select("<script>" +
             "select count(*) from ts_goods where 1=1 and isdel=0" +
             "</script>")
