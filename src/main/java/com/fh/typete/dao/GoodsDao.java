@@ -11,11 +11,11 @@ public interface GoodsDao {
     @Options(useGeneratedKeys = true,keyProperty = "id")
     void addGoods(Goods goods);
     @Select("<script>" +
-            "select count(*) from ts_goods where 1=1 and isdel=0" +
+            "select count(*) from ts_goods where 1=1 and isdel=0 order by sortnum " +
             "</script>")
     Long chaCount(GoodsVo gv);
     @Select("<script>" +
-            "select * from ts_goods where 1=1 and isdel=0" +
+            "select * from ts_goods where 1=1 and isdel=0 order by sortnum " +
             " limit #{startIndex},#{limit}" +
             "</script>")
     List<Goods> chaGoods(GoodsVo gv);
