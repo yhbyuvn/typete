@@ -26,4 +26,6 @@ public interface ProDao {
     void upPro(Propertys pro);
     @Select("select * from ts_pro where typeid=#{typeid} and isdel=0")
     List<Propertys> chaProByTypeid(Integer typeid);
+    @Select("select * from ts_pro where type=#{type} and isdel=0")
+    List<Propertys> chaProByType(Integer type);
 }

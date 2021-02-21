@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 public class Propertys {
     private Integer id;
@@ -20,6 +21,16 @@ public class Propertys {
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date updatedate;
     private String author;
+
+    private List<ProValue> values;
+
+    public List<ProValue> getValues() {
+        return values;
+    }
+
+    public void setValues(List<ProValue> values) {
+        this.values = values;
+    }
 
     public Integer getId() {
         return id;

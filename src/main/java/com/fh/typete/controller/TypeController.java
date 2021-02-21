@@ -139,6 +139,11 @@ public class TypeController {
         List<Propertys> li=ts.chaProByTypeid(typeid);
         return RespData.success(li);
     }
+    @PostMapping("chaProByType")
+    public RespData chaProByType(Integer type){
+        List<Propertys> li=ts.chaProByType(type);
+        return RespData.success(li);
+    }
     /*
      * 请求路径：http://localhost:8080/api/type/addPro
      * 参数：name（数据类型：String 名称 必填）
@@ -219,6 +224,11 @@ public class TypeController {
         ts.addGoods(goods,pros,sku);
         return RespData.success(null);
     }
+    @PostMapping("upGoodsValue")
+    public RespData upGoodsValue(Integer goodid,String pros,String sku){
+        ts.upGoodsValue(goodid,pros,sku);
+        return RespData.success(null);
+    }
     @PostMapping("chaGoods")
     public RespData chaGoods(GoodsVo gv){
         if (gv.getPage()==null){
@@ -245,5 +255,15 @@ public class TypeController {
         goods.setIsdel(1);
         ts.delGoods(goods);
         return RespData.success(null);
+    }
+    @PostMapping("chaGoodsValue")
+    public RespData chaGoodsValue(Integer goodid){
+        List<GoodsValue> li=ts.chaGoodsValue(goodid);
+        return RespData.success(li);
+    }
+    @PostMapping("chaProValueByTypeid")
+    public RespData chaProValueByTypeid(Integer typeid){
+        Map map=ts.chaProValueByTypeid(typeid);
+        return RespData.success(map);
     }
 }

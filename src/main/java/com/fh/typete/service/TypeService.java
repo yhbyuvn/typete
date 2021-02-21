@@ -44,4 +44,12 @@ public interface TypeService {
     void upGoods(Goods goods);
 
     void delGoods(Goods goods);
+
+    List<GoodsValue> chaGoodsValue(Integer goodid);
+
+    void upGoodsValue(Integer goodid, String pros, String sku);
+
+    List<Propertys> chaProByType(Integer type);
+
+    Map chaProValueByTypeid(Integer typeid);
 }
